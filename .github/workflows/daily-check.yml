@@ -1,0 +1,31 @@
+name: Daily Toggl Validation
+
+on:
+  schedule:
+    - cron: '0 15 * * *' # every day at 15:00 UTC = 8:00 AM PDT
+  workflow_dispatch:     # allow manual run too
+
+jobs:
+  check-toggl:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run TypeScript Script
+        run: npx ts-node src/index.ts
+        env:
+          TOGGL_API_TOKEN: ${{ secrets.TOGGL_API_TOKEN }}
+          SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+
