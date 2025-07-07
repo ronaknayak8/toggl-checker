@@ -20,6 +20,9 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+      - name: install dependencies
+        run: npm install date-fns-tz
+
 
       - name: Run TypeScript Script
         run: npx ts-node src/index.ts
