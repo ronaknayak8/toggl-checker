@@ -42,7 +42,7 @@ export function isOverHours(entries: TimeEntry[], maxSeconds = 7.5 * 3600): bool
 }
 
 // — Rule #3: Unusual Time Slots — 
-// Returns entries whose start time in PDT falls in forbidden windows
+
 export function findUnusualSlots(entries: TimeEntry[]): TimeEntry[] {
   const tz = "America/Los_Angeles";
   return entries.filter(e => {
@@ -60,16 +60,6 @@ export function findUnusualSlots(entries: TimeEntry[]): TimeEntry[] {
     );
   });
 }
-
-
-
-
-
-
-
-
-
-
 
 
 
