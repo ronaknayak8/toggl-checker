@@ -11,25 +11,8 @@ import {
 } from "./checker";
 import { sendReport, ReportEntry } from "./mailer";
 
-
-
-
-
-
-
-
-
 import { subDays, format } from "date-fns";
 import { toZonedTime } from "date-fns-tz";
-
-
-
-
-
-
-
-
-
 
 
 (async () => {
@@ -56,14 +39,17 @@ import { toZonedTime } from "date-fns-tz";
   const utcYesterday = subDays(utcNow, 1);
 
   // ISO date for computing UTC bounds
-  const isoDateStr = format(utcYesterday, "yyyy-MM-dd");  // e.g. "2025-07-06"
+  const isoDateStr = format(utcYesterday, "yyyy-MM-dd");  
 
   const tz         = "America/Los_Angeles";
   const startOfDay = toZonedTime(`${isoDateStr}T00:00:00`, tz).toISOString();
   const endOfDay   = toZonedTime(`${isoDateStr}T23:59:59`, tz).toISOString();
 
   // Human‑readable date for emails and logs
-  const dateStr = format(utcYesterday, "EEE MMM dd yyyy"); // e.g. "Sun Jul 06 2025"
+  const dateStr = format(utcYesterday, "EEE MMM dd yyyy"); 
+
+
+  
   // 4) Fetch all time entries for that window
   const allEntries = await fetchTimeEntries(wid, startOfDay, endOfDay);
 
