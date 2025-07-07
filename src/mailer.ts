@@ -17,12 +17,7 @@ export interface ReportEntry {
 }
 
 /**
- * Sends a Toggl validation report email.
- * - nameIssues: entries with invalid names
- * - conflictEntries: entries overlapping other entries
- * - overHourEntries: single summary entry if daily total > 7.5h
- * - unusualSlotEntries: entries logged in unusual times
- * - dateStr: human‑readable report date
+ * Sends a Toggl validation report email
  */
 export async function sendReport(
   nameIssues: ReportEntry[],
