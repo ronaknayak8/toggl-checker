@@ -17,11 +17,11 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-
+  
       - name: Install dependencies
-        run: npm ci
-      - name: install dependencies
-        run: npm install date-fns-tz
+        run: |
+            npm install
+            npm install ts-node typescript @types/node @types/dotenv date-fns date-fns-tz
 
 
       - name: Run TypeScript Script
